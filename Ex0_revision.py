@@ -76,7 +76,7 @@ print("\n-------------------------------------------\n"
 budget = 50
 if total_cost <= budget:
     print("Purchase approved: Within budget.")
-elif total_cost >= budget and total_cost < 60:
+elif total_cost < 60:
     print("Warning: Purchase exceeds budget but is manageable.")
 else:
     print("Purchase denied: Budget severely exceeded.")
@@ -214,7 +214,7 @@ product_catalogue = {
 # 4. If the code does not exist, print "Error: Product code not found."
 
 # Write your code below:
-product_code = input("Enter a product code: ")
+product_code = input("Enter a product code: ").upper()
 
 if product_code in product_catalogue:
     price = product_catalogue[product_code]
@@ -253,6 +253,29 @@ else:
 # 1. Modify the input prompt in Task 5 to ensure the user's input is always converted to uppercase (to match the keys).
 # 2. **Optional but Recommended:** Review the solution provided by the tutor for handling `ValueError` (like in Task 3) and apply that knowledge to Task 5 to prevent potential crashes if the dictionary used different data types.
 
+# dict = {
+#     '001': "a",
+#     '002': "b",
+#     '003': "c",
+#     '004': "d",
+#     '005': "e",
+# }
+
+# while True:
+#     user_input = input("Enter a product code (001, 002, 003...): ")
+
+#     try:
+#         code = int(user_input)
+#         break
+#     except ValueError:
+#         print("Error: Please enter a valid number.\n")
+
+# if code in dict:
+#     print(f"Product found: {dict[code]}")
+# else:
+#     print("Error: Product code not found.")
+
+
 # -------------------------------------------
 
 # Extension 2: The WHILE Loop Challenge
@@ -271,6 +294,17 @@ print("\n-------------------------------------------\n"
     + "-------------------------------------------")
 
 # Write your code below:
+
+secret_colour = "blue"
+guess = ""
+
+while guess != "blue":
+    guess = input("Guess my secret colour: ").lower()
+    if guess == "blue":
+        print("You guessed it!")
+        break
+    else:
+        print("Try again!")
 
 
 # -------------------------------------------
