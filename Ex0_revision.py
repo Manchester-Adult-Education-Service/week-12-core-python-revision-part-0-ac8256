@@ -37,7 +37,10 @@ print("-------------------------------------------\n"
 # 4. Print the final 'total_cost' using an f-string, formatted to two decimal places.
 
 # Write your code below:
-
+price = 45
+VAT_RATE = 0.2
+total_cost = price + price * VAT_RATE
+print(f"{total_cost:.2f}")
 
 # -------------------------------------------
 # CHECKPOINT
@@ -70,6 +73,13 @@ print("\n-------------------------------------------\n"
 # 5. Otherwise (if total_cost is 60 or more), print "Purchase denied: Budget severely exceeded."
 
 # Write your code below:
+budget = 50
+if total_cost <= budget:
+    print("Purchase approved: Within budget.")
+elif total_cost < 60:
+    print("Warning: Purchase exceeds budget but is manageable.")
+else:
+    print("Purchase denied: Budget severely exceeded.")
 
 
 # -------------------------------------------
@@ -108,11 +118,15 @@ print("\n-------------------------------------------\n"
 def calculate_area():
     # Insert try/except block here
     # Remember to handle the input() and int() conversions inside the try block
-    length = int(input("Enter rectangle length: "))
-    width = int(input("Enter rectangle width: "))
-    area = length * width
-    return area
-    # Insert except block here
+    try:
+        length = int(input("Enter rectangle length: "))
+        width = int(input("Enter rectangle width: "))
+        area = length * width
+        return area
+        # Insert except block here
+    except ValueError:
+        print("Error: Please enter only numerical values.")
+        return 0
 
 # Call the function:
 rectangle_area = calculate_area()
@@ -154,6 +168,12 @@ weekly_sales = [120.50, 155.75, 95.00, 180.25, 130.50]
 # 5. Print both the 'total_sales' and 'average_sale', formatted to two decimal places.
 
 # Write your code below:
+total_sales = 0
+for i in weekly_sales:
+    total_sales += i 
+average_sale = total_sales / len(weekly_sales)
+print(f"{total_sales:.2f}")
+print(f"{average_sale:.2f}")
 
 
 # -------------------------------------------
@@ -194,6 +214,13 @@ product_catalogue = {
 # 4. If the code does not exist, print "Error: Product code not found."
 
 # Write your code below:
+product_code = input("Enter a product code: ").upper()
+
+if product_code in product_catalogue:
+    price = product_catalogue[product_code]
+    print(f"Product: {product_code} | Price: £{price:.2f}")
+else:
+    print("Error: Product code not found.")    
 
 
 # -------------------------------------------
@@ -226,6 +253,8 @@ product_catalogue = {
 # 1. Modify the input prompt in Task 5 to ensure the user's input is always converted to uppercase (to match the keys).
 # 2. **Optional but Recommended:** Review the solution provided by the tutor for handling `ValueError` (like in Task 3) and apply that knowledge to Task 5 to prevent potential crashes if the dictionary used different data types.
 
+
+
 # -------------------------------------------
 
 # Extension 2: The WHILE Loop Challenge
@@ -244,6 +273,17 @@ print("\n-------------------------------------------\n"
     + "-------------------------------------------")
 
 # Write your code below:
+
+secret_colour = "blue"
+guess = ""
+
+while guess != "blue":
+    guess = input("Guess my secret colour: ").lower()
+    if guess == "blue":
+        print("You guessed it!")
+        break
+    else:
+        print("Try again!")
 
 
 # -------------------------------------------
@@ -269,6 +309,12 @@ even_numbers = []
 
 # Write your code below:
 
+for i in data_set:
+    remainder = i % 2
+    if remainder == 0:
+        even_numbers.append(i)
+
+print(even_numbers)
 
 # -------------------------------------------
 # ADVANCED ACTIVITY: Combining Concepts
@@ -286,10 +332,28 @@ print("\n-------------------------------------------\n"
 # 6. Return the **Grand Total** for the entire order.
 
 # Write your code below:
+product_catalogue = {
+    'PRD001': 15.99,
+    'PRD002': 22.50,
+    'PRD003': 8.75,
+    'PRD004': 40.00
+}
+
+
 def process_order(order_dict, catalogue):
     grand_total = 0
     print("--- Processing Order ---")
     # Insert code to loop through the order and calculate the total here
+    
+    for product_code in order_dict: 
+        quantity = order_dict[product_code]
+
+        if product_code in catalogue:
+            price = catalogue[product_code]
+            line_total = price * quantity
+            print(f"{product_code}: £{price:.2f} × {quantity} = £{line_total:.2f}")
+            grand_total += price * quantity
+
     return grand_total
 
 # Test the function:
@@ -302,6 +366,8 @@ user_order = {
 # Call the function and print the final bill (formatted to two decimal places):
 # Write your code below:
 
+total = process_order(user_order, product_catalogue)
+print(f"----------------------------\nGrand total: £{total:.2f}")
 
 # -------------------------------------------
 # FINAL CHECKPOINT
