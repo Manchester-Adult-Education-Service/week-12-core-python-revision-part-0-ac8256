@@ -253,27 +253,6 @@ else:
 # 1. Modify the input prompt in Task 5 to ensure the user's input is always converted to uppercase (to match the keys).
 # 2. **Optional but Recommended:** Review the solution provided by the tutor for handling `ValueError` (like in Task 3) and apply that knowledge to Task 5 to prevent potential crashes if the dictionary used different data types.
 
-# dict = {
-#     '001': "a",
-#     '002': "b",
-#     '003': "c",
-#     '004': "d",
-#     '005': "e",
-# }
-
-# while True:
-#     user_input = input("Enter a product code (001, 002, 003...): ")
-
-#     try:
-#         code = int(user_input)
-#         break
-#     except ValueError:
-#         print("Error: Please enter a valid number.\n")
-
-# if code in dict:
-#     print(f"Product found: {dict[code]}")
-# else:
-#     print("Error: Product code not found.")
 
 
 # -------------------------------------------
@@ -330,6 +309,12 @@ even_numbers = []
 
 # Write your code below:
 
+for i in data_set:
+    remainder = i % 2
+    if remainder == 0:
+        even_numbers.append(i)
+
+print(even_numbers)
 
 # -------------------------------------------
 # ADVANCED ACTIVITY: Combining Concepts
@@ -351,10 +336,9 @@ def process_order(order_dict, catalogue):
     grand_total = 0
     print("--- Processing Order ---")
     # Insert code to loop through the order and calculate the total here
-    return grand_total
 
 # Test the function:
-user_order = {
+order_dict = {
     'PRD001': 2,
     'PRD003': 5,
     'PRD099': 1
@@ -363,6 +347,7 @@ user_order = {
 # Call the function and print the final bill (formatted to two decimal places):
 # Write your code below:
 
+print(f"Grand total:")
 
 # -------------------------------------------
 # FINAL CHECKPOINT
