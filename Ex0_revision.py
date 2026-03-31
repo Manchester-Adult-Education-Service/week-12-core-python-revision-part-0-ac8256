@@ -332,13 +332,32 @@ print("\n-------------------------------------------\n"
 # 6. Return the **Grand Total** for the entire order.
 
 # Write your code below:
+product_catalogue = {
+    'PRD001': 15.99,
+    'PRD002': 22.50,
+    'PRD003': 8.75,
+    'PRD004': 40.00
+}
+
+
 def process_order(order_dict, catalogue):
     grand_total = 0
     print("--- Processing Order ---")
     # Insert code to loop through the order and calculate the total here
+    
+    for product_code in order_dict: 
+        quantity = order_dict[product_code]
+
+        if product_code in catalogue:
+            price = catalogue[product_code]
+            line_total = price * quantity
+            print(f"{product_code}: £{price:.2f} × {quantity} = £{line_total:.2f}")
+            grand_total += price * quantity
+
+    return grand_total
 
 # Test the function:
-order_dict = {
+user_order = {
     'PRD001': 2,
     'PRD003': 5,
     'PRD099': 1
@@ -347,7 +366,8 @@ order_dict = {
 # Call the function and print the final bill (formatted to two decimal places):
 # Write your code below:
 
-print(f"Grand total:")
+total = process_order(user_order, product_catalogue)
+print(f"----------------------------\nGrand total: £{total:.2f}")
 
 # -------------------------------------------
 # FINAL CHECKPOINT
